@@ -1,0 +1,33 @@
+@import "colors";
+
+#formContainer {
+    color: $darkGray;
+    margin-top: 75px;
+}
+
+#form {
+    background: $lightGray;
+    border: 1px;
+    border-color: $lightGray;
+    border-radius: 5px;
+    border-style: solid;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 7%;
+}
+
+#formButton {
+    color: $white;
+    background: $almostBlack;
+    border-color: $almostBlack;
+}
+
+#password {
+    font-size: 28px;
+}
+
+#rememberMe {
+    font-size: 10px;
+}
+

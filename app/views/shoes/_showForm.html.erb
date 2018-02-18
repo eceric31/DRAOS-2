@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <%= form_for OrderItem.new, url: {controller: "order_items", action: "create"}, class: "form-inline" do |f|%>
+
+            <table id="shoe-form-table">
+                <tr>
+                    <td class="shoe-form-col-1">
+                        Size
+                    </td>
+                    <td class="shoe-form-col-2">
+                        Quantity
+                    </td>
+                </tr>
+                <tr>
+                    <td class="shoe-form-col-1">         
+                        <%= f.select :size,  options_from_collection_for_select(@shoe.shoe_sizes.order(:size), "size", "size"), 
+                            {:prompt => "All sizes"}, {id:"shoe-form-select", class: "form-control"} %>
+                    </td>
+                    <td class="shoe-form-col-2">
+                        <%= f.number_field :quantity, value: "1", id: "shoe-form-text-field", 
+                        class: "form-control", min: 1 %> 
+                         <%= f.hidden_field :shoe_id, value: @shoe.id %>
+                    </td>
+                </tr>
+            </table>
+            <div id="shoe-form-row-btn">
+                <div id="shoe-form-row-btn-left">
+                    <%= f.submit "ADD TO CART", id: "formButtonAdd", class: "btn btn-success" %>
+                </div>
+                <div id="shoe-form-row-btn-right">
+                    <%= f.submit "BUY NOW", name: "buy", id: "formButtonBuy", class: "btn btn-success" %> 
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+

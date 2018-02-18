@@ -1,0 +1,5 @@
+<p style="font-size: 18px; margin-left: 20px"> Delivery Address </p>
+<%= render "addressForm", locals: {addressType: "delivery"} %>
+<p style="font-size: 18px; margin-left: 20px"> Billing Address </p>
+<input type="checkbox" name="billingToo" value="billing" checked> Use delivery address <br>
+<%= render "addressForm", locals: {addressType: "billing"} %>

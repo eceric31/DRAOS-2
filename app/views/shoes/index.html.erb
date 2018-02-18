@@ -1,0 +1,21 @@
+<div class="container" id="index-page">
+    <div class="row">
+        <img src="http://www.4usky.com/data/out/83/164744921-shoes-wallpapers.jpg" 
+            width="100%" height="350px">
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-5">
+            <div id="brand_select">
+                Featured Products <br>
+                <%= select("brand", "brand_id", Brand.all.collect {|b| [ b.brand, b.id ] }) %>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <%= render partial: "shoesTable", locals: {brandSearch: 1, styleSearch: nil} %>
+        </div>
+    </div>
+</div>
+

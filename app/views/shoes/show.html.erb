@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-2">
+            <img src= <%= @shoe.photo_url %> width="300" height="300">
+        </div>
+        <div class="col-xs-4">
+            <div class="row">
+                <p id="shoe-title">
+                    <%= @shoe.model %>
+                </p>
+                <p id="shoe-description">
+                    <%= @shoe.description %>
+                </p>
+            </div>
+            <div class="row" id="shoe-form-div">
+                <%= render "showForm" %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2" id="shoe-similar">
+            <p> Similar products </p>
+            <%= render partial: "shoesTable", locals: {brandSearch: nil, styleSearch: @shoe.style_id} %>
+        </div>
+    </div>
+</div>
+
+

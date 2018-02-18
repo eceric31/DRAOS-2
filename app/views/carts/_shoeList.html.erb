@@ -1,0 +1,27 @@
+<p style="font-size: 18px; margin-left: 20px"> Your basket </p>
+<% @order_items.each do |order_item|%>
+    <div class="row order-item">
+        <div class="col-xs-5 order-item-photo">
+            <%= image_tag(order_item.shoe.photo_url) %>
+        </div>
+        <div class="col-xs-4 order-item-info">
+            Model: <%= order_item.shoe.model %> <br>
+            Size: <%= order_item.size %> <br>
+            Color: <%= order_item.shoe.color.color %> <br>
+            ID: <%= order_item.shoe.id %> <br>
+        </div>
+        <div class="col-xs-3 order-item-price">
+            Price: <br>
+            <span style="font-size: 18px; color: black"> <%= order_item.price %> </span> <br>
+            <br>
+            <br>
+            <div>
+                Quantity
+                <%= text_field_tag 'quantity', order_item.quantity, disabled: true, id: "order-item-quantity" %>
+            </div>
+            <br>
+            <span id="order-item-remove"> <%= link_to "Remove", order_item, method: :delete %> </span>
+        </div>
+    
+    </div>
+<% end %>

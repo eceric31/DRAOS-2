@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  model: MyString
+  description: MyText
+  size: 1
+  price: 1.5
+  gender: false
+
+two:
+  model: MyString
+  description: MyText
+  size: 1
+  price: 1.5
+  gender: false

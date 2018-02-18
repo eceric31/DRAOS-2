@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="navbar-header">
+          <%= link_to "abhShoes", '/', class: "navbar-brand" %>
+        </div>
+        <%= Category.find_each do |category| %>
+          <div class="navbar-header">
+            <%= link_to category.category.upcase, "/categories/#{category.id}", id: "navCategory", class: "navbar-brand" %>
+          </div>
+        <% end %>
+
+        <span class="pull-right">
+          <% if current_user %>
+            <div class="navbar-header">
+              <p class="navbar-brand"> <%= current_user.email %> </p>
+              <p class="navbar-brand"> | </p>
+              <%= link_to "Logout", '/logout', class: "navbar-brand" %>
+            </div>
+          <% else %>
+            <div class="navbar-header">
+              <%= link_to 'LOGIN', '/login', class: "navbar-brand" %>  
+              <p class="navbar-brand"> | </p>
+              <%= link_to 'REGISTER', '/signup', class: "navbar-brand" %>
+            </div>
+          <% end %>
+          <div class="navbar-header">
+            <%= link_to image_tag("http://cdn.mysitemyway.com/icons-watermarks/flat-circle-white-on-black/broccolidry/broccolidry_shopping-cart/broccolidry_shopping-cart_flat-circle-white-on-black_512x512.png", size: "25x25"),
+                '/cart', class: "navbar-brand" %>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
+

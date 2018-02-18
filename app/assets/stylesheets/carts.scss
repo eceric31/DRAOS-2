@@ -1,0 +1,149 @@
+// Place all the styles related to the Carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'colors';
+
+#receipt-step {
+    display: inline-block;
+    width: 100%;
+
+    #receipt-cart {
+        float: left;
+        text-align: left;
+        width: 30%;
+    }
+    
+    #receipt-shipment {
+        float: left;
+        text-align: center;
+        width: 30%;
+    }
+    
+    #receipt-payment {
+        float: right;
+        text-align: right;
+        width: 30%;
+    }
+}
+
+.progress {
+    height: 2px !important;
+    .progress-bar {
+        background-color: $almostBlack;
+        height: 2px;
+    }
+}
+
+#receipt-price {
+    border: 1px solid $lightGray;
+    border-radius: 2%;
+    color: $almostBlack;
+    padding-top: 20px;
+
+    #receipt-header {
+        font-size: 16px;
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    #receipt-price-up {
+        font-size: 14px;
+        margin: 0 auto;
+        text-align: right;
+        width: 80%;
+    }
+    
+    #receipt-price-down {
+        border-top: 1px solid $gray;
+        margin: 20px auto;
+        padding-top: 10px;
+        text-align: right;
+        width: 80%;
+    }
+
+    .receipt-gray-p {
+        color: $gray;
+    }
+}
+
+#receipt-buttons {
+    margin-top: 15px;
+}
+
+.receipt-button {
+    border: 1px solid $almostBlack !important;
+    border-radius: 2%;
+    float: right;
+    margin: 0 0 0 10px;
+    width: 30%;
+    
+}
+
+#receipt-button-cancel {
+    background: $white;
+    color: $gray;
+    &:hover {
+        background: $lightGray;
+        border: 1px solid $lightGray !important;
+    }
+    &:focus {
+        outline: 0;
+    }
+}
+
+#receipt-button-continue {
+    background: $almostBlack;
+    color: $white;
+
+    &:hover {
+        background: $yellow;
+        border: 1px solid $yellow !important;
+        color: $almostBlack;
+    }
+
+    &:active {
+        background: $grayYellow;
+        border: 1px solid $grayYellow !important;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.order-item{
+    margin-top: 30px;
+    width: 100%;
+    padding: 0;
+    .order-item-photo {
+        img{
+            max-width:100%;
+            max-height:100%;            
+        }
+    }
+    .order-item-info {
+        padding-top: 20px;
+    }
+    .order-item-price {
+        padding-top: 20px;
+        text-align: right;
+
+        #order-item-quantity {
+            display: inline-block;
+            text-align: center;
+            width: 30%;
+        }
+
+        #order-item-remove {
+            a {
+                color: $almostBlack;
+                &:hover {
+                    color: $yellow;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+}

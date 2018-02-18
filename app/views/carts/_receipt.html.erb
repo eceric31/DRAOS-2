@@ -1,0 +1,43 @@
+
+<div id="receipt-step">
+    <div id="receipt-cart">
+        CART
+    </div>
+    <div id="receipt-shipment">
+        SHIPMENT
+    </div>
+    <div id="receipt-payment">
+        PAYMENT
+    </div>
+</div>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" 
+        aria-valuemax="100" style="width:25%">
+    </div>
+</div>
+
+<div id="receipt-price">
+    <div id="receipt-header">
+        Order
+        <p class="receipt-gray-p" style="display:inline"> 
+            <%= current_order.order_items.count %> 
+            items 
+        </p>
+    </div>
+    
+    <div id="receipt-price-up">
+        <p class="receipt-gray-p"> Price </p>
+        <p> <%= current_order.subtotal %> </p>
+        <p class="receipt-gray-p"> Shipment </p>
+        <p> <%= current_order.shipping %> KM </p>
+    </div>
+    <div id="receipt-price-down">
+        In total <%= current_order.subtotal + current_order.shipping %> KM
+    </div>
+</div>
+
+<div id="receipt-buttons">
+    <button id="receipt-button-continue" class="receipt-button btn"> Continue </button>
+    <button id="receipt-button-cancel" class="receipt-button btn"> Cancel </button>
+</div>
+

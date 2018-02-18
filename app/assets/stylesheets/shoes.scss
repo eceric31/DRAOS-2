@@ -1,0 +1,112 @@
+// Place all the styles related to the Shoes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'colors';
+
+#shoe-title {
+    font-size: 18px;
+}
+
+#shoe-description {
+    font-size: 12px;
+}
+
+#shoe-similar {
+    margin-top: 75px;
+    p {
+        margin: 0 auto;
+        text-align: center;
+        width: 20%;
+    }
+    table {
+        margin-top: 10px;
+    }
+}
+
+#shoe-form-div {
+    margin-top: 20px;
+    width: 65%;
+    .row {
+        width: 100%;
+        margin: 0;
+    }
+    .col {
+        padding: 0;
+    }
+    .form-control {
+        display: inline;
+    }
+    #shoe-form-select {
+        border: 1px solid $gray;
+        border-radius: 5%;
+        color: $gray;
+        width: 90%;
+        &:focus {
+            outline: none;
+        }
+    }
+    #shoe-form-text-field {
+        text-align: center;
+        width: 100%;
+    }
+    #shoe-form-table {
+        border-collapse: collapse;
+        width: 100%;
+
+        .shoe-form-col-1 {
+            width: 80%;
+        }
+        .shoe-form-col-2 {
+            width: 20%;
+        }
+        .shoe-form-col-3 {
+            width: 50%;
+        }
+    }
+}
+
+#shoe-form-row-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 0;
+    width: 100%;
+
+    #shoe-form-row-btn-left {
+        float: left;
+        margin: 0;
+        width: 47%;
+    }
+
+    #shoe-form-row-btn-right {
+        float: right;
+        margin: 0;
+        width: 47%;
+    }
+}
+
+#formButtonAdd {
+    background: $white;
+    border: 1px solid $almostBlack;
+    border-radius: 5%;
+    color: $gray;
+    width: 100%;
+
+    &:hover {
+        background: $lightGray;
+    }
+}
+
+#formButtonBuy {
+    background: $almostBlack;
+    border: 1px solid $almostBlack;
+    border-radius: 5%;
+    color: $white;
+    width: 100%;
+
+    &:hover {
+        background: $yellow;
+        border: 1px solid $yellow;
+        color: $almostBlack;
+    }
+}
