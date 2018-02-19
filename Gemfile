@@ -57,4 +57,6 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'jquery-rails' 
 
+gem 'stripe'
+
 ruby "2.4.3"

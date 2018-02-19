@@ -8,11 +8,12 @@
                 </div>
             </div>
             <div id="cart-page-2">
-                <div id="cart-shoe-list">
+                <div id="cart-shoe-list" style="display: none">
                     <%= render "addressFormContainer" %>
                 </div>
             </div>
             <div id="cart-page-3">
+                <%= render :template => "charges/new", :locals => { :amount => current_order.subtotal + current_order.shipping } %> 
             </div>
 
             <div id="cart-shoe-form">
