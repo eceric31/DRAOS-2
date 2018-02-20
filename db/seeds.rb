@@ -168,3 +168,9 @@
 # OrderStatus.create(id: 2, status: "Placed")
 # OrderStatus.create(id: 3, status: "Shipped")
 # OrderStatus.create(id: 4, status: "Cancelled")
+
+#Countries
+# Country.create(country: "Bosnia and Herzegovina");
+# Country.create(country: "Slovenia");
+# Country.create(country: "Croatia");
+# Country.create(country: "Serbia");

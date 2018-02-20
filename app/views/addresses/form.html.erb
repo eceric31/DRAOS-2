@@ -1,0 +1,27 @@
+<div style="margin-bottom: 150px">
+    <p style="font-size: 18px; margin: 20px"> Delivery Address </p>
+    <%= render "formInput", {:type => 1} %>
+    <p style="font-size: 18px; margin: 20px; margin-top: 40px "> 
+        Billing Address 
+        <span style="font-size: 14px; margin-left: 20px">
+            <input type="checkbox" name="addressType" id="billing_address_checkbox" value="billing" checked >     
+            Use delivery address 
+        </span>
+    </p>
+    <div id="billing-address-div" style="display: none">
+        <%= render "formInput", {:type => 2} %>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+  var checkbox = document.getElementById('billing_address_checkbox');
+  var bAddress_div = document.getElementById('billing-address-div');
+  checkbox.onchange = function() {
+     if(this.checked) {
+       bAddress_div.style['display'] = 'none';
+     } else {
+       bAddress_div.style['display'] = 'block';
+     }
+  };
+</script>

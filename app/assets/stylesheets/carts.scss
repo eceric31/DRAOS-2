@@ -67,48 +67,73 @@
     }
 }
 
-#receipt-buttons {
+.cart-buttons {
     margin-top: 15px;
 }
 
-.receipt-button {
+.cart-button {
     border: 1px solid $almostBlack !important;
     border-radius: 2%;
     float: right;
     margin: 0 0 0 10px;
     width: 30%;
-    
 }
 
-#receipt-button-cancel {
+.cart-button-cancel {
     background: $white;
-    color: $gray;
     &:hover {
         background: $lightGray;
         border: 1px solid $lightGray !important;
+        a {
+            color: $gray;            
+            text-decoration: none;
+        }
     }
     &:focus {
         outline: 0;
+    }
+    a {
+        color: $gray;
+        text-decoration: none;
+    }
+    &:active {
+        a {
+            color: $gray;
+            text-decoration: none;
+        }
     }
 }
 
-#receipt-button-continue {
+.cart-button-continue {
     background: $almostBlack;
-    color: $white;
-
     &:hover {
         background: $yellow;
         border: 1px solid $yellow !important;
-        color: $almostBlack;
+        a {
+            color: $almostBlack;
+            text-decoration: none;
+        }
     }
-
     &:active {
         background: $grayYellow;
         border: 1px solid $grayYellow !important;
+        a {
+            color: $almostBlack;
+            text-decoration: none;
+        }
     }
 
     &:focus {
         outline: 0;
+        a {
+            color: $almostBlack;
+            text-decoration: none;    
+        }
+    }
+
+    a {
+        color: $white;
+        text-decoration: none;
     }
 }
 
@@ -146,4 +171,9 @@
         }
     }
 
+}
+
+.stripe-button-el {
+    float: right;
+    margin-left: 10px;
 }
