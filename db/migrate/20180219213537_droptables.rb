@@ -4,7 +4,5 @@ class Droptables < ActiveRecord::Migration[5.1]
     drop_table :cities
     drop_table :addresses_people
     drop_table :people
-    drop_table :addresses_purchases
-
   end
 end
