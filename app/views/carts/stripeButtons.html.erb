@@ -1,11 +1,2 @@
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-        data-description=""
-        data-amount= "<%= ((current_order.subtotal + current_order.shipping) * 100) %>"
-        data-locale="auto"
-        data-label="PAY <%= (current_order.subtotal + current_order.shipping) %>KM"
-        data-currency="BAM"></script>
-    <button class="cart-button-cancel cart-button btn "> 
-        <%= link_to "Back", :action => :new, remote: true %>
-    </button>
+
 </div>
