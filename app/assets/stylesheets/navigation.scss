@@ -1,19 +1,29 @@
 @import "colors";
 
-.container {
-    margin: 0;
-    padding: 0;
+.header-style-1 {
+    background-color: #000000;
+    border: 0px solid #000000;
+    margin-bottom: 50px;
+}
+
+.header-style-2 {
+    background-color: transparent;
+    border: transparent;
+    margin-bottom: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    z-index: 1000;
+    .navbar-default {
+        background-color: transparent;
+        border: transparent;
+    }
 }
 
 .navbar {
     border-radius: 0px;
     margin-bottom: 0;
-}
-
-.navbar-header {
-    height: auto;
 }
 
 .navbar-default {
@@ -27,7 +37,23 @@
     font-size: 12px;
 }
 
-#navCategory:hover {
-    color: $white;
-    border-bottom: 1px solid $mellowYellow;
+.navbar-header {
+    height: 100%;
+}
+
+.navbar-brand-static {
+        &:hover {
+            color: $white !important;
+        }
+}
+
+.navCategory{
+    &:hover {
+        color: $white !important;
+        border-bottom: 1px solid $mellowYellow !important;
+    }
+}
+
+.navbar .navbar-nav > li > a {
+    line-height: 150px;
 }

@@ -2,20 +2,32 @@
   <div class="row"> 
     <div class="col-xs-4 col-xs-offset-4">
       Create your account!
-      <span class="pull-right">
+      <span class="pull-right signup-register-link">
         <%= link_to 'Login to your account', '/login' %>
       </span>
+
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2>There were some errors:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <div>
-        <%= form_with scope: :user, url: '/users' do |f| %>
+        <%= form_with scope: :user, url: '/users', id: "registration-form" do |f| %>
           <div id="form" class="form-group">              
             EMAIL <br> 
-            <%= f.text_field :email, class: "form-control" %>
+            <%= f.text_field :email, required: true, class: "form-control" %>
             <br>
             PASSWORD <br> 
-            <%= f.password_field :password, class: "form-control" %>
+            <%= f.password_field :password, required: true, class: "form-control" %>
             <br>
             PASSWORD CONFIRMATION <br> 
-            <%= f.password_field :password_confirmation, class: "form-control" %>
+            <%= f.password_field :password_confirmation, required: true, class: "form-control" %>
           </div>
 
           <span class="pull-right">
@@ -26,3 +38,17 @@
     </div>
   </div>
 </div>
+
+<script>
+  function validateregitrationFunction() {
+    $("#registration-form").validate({
+      debug: false,
+      rules: {
+        "user[password]": { minlength: 8 },
+        "user[email]": { email: true }
+            }
+          })
+        }
+  $(document).ready(validateregitrationFunction);
+  $(document).on('page:load', validateregitrationFunction);
+</script>

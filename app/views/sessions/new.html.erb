@@ -2,21 +2,23 @@
   <div class="row"> 
     <div class="col-xs-4 col-xs-offset-4">
       Login to your account
-      <span class="pull-right">
+      <span class="pull-right signup-register-link">
         <%= link_to 'Create account', '/signup', id: "link"  %>
       </span>
       <div>
-        <%= form_tag '/login' do %>
+        <%= form_tag '/login', id: "login-form" do %>
           <div id="form" class="form-group">              
             EMAIL <br>
-            <%= text_field_tag :email, "", class: "form-control" %>
+            <%= text_field_tag :email, "", required: true, class: "form-control" %>
             <br>
             PASSWORD <br>
-            <%= password_field_tag :password, "", id: "password", class: "form-control" %>
+            <%= password_field_tag :password, "", required: true, id: "password", class: "form-control" %>
           </div>
-          
+          <div style="margin-left: 20px; display: inline-block;">
             <%= check_box_tag :remember_me, 1, params[:remember_me] %>
             <span id="rememberMe"> REMEMBER ME </span>
+          </div>
+
           <span class="pull-right">
             <%= submit_tag "LOGIN", id: "formButton", class: "btn btn-success" %>
           </span>
@@ -25,3 +27,18 @@
     </div>
   </div>
 </div>
+
+<script>
+  function validateloginFunction() {
+    $("#login-form").validate({
+      debug: false,
+      rules: {
+        "password": { minlength: 8 },
+        "email": { email: true }
+            }
+          })
+        }
+  $(document).ready(validateloginFunction);
+  $(document).on('page:load', validateloginFunction);
+</script>
+

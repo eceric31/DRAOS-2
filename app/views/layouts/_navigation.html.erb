@@ -7,26 +7,26 @@
         </div>
         <%= Category.find_each do |category| %>
           <div class="navbar-header">
-            <%= link_to category.category.upcase, "/categories/#{category.id}", id: "navCategory", class: "navbar-brand" %>
+            <%= link_to category.category.upcase, "/categories/#{category.id}", class: "navCategory navbar-brand" %>
           </div>
         <% end %>
 
         <span class="pull-right">
           <% if current_user %>
             <div class="navbar-header">
-              <p class="navbar-brand"> <%= current_user.email %> </p>
-              <p class="navbar-brand"> | </p>
+              <p class="navbar-brand navbar-brand-static"> <%= current_user.email %> </p>
+              <p class="navbar-brand navbar-brand-static"> | </p>
               <%= link_to "Logout", '/logout', class: "navbar-brand" %>
             </div>
           <% else %>
             <div class="navbar-header">
               <%= link_to 'LOGIN', '/login', class: "navbar-brand" %>  
-              <p class="navbar-brand"> | </p>
+              <p class="navbar-brand navbar-brand-static"> | </p>
               <%= link_to 'REGISTER', '/signup', class: "navbar-brand" %>
             </div>
           <% end %>
           <div class="navbar-header">
-            <%= link_to image_tag("http://cdn.mysitemyway.com/icons-watermarks/flat-circle-white-on-black/broccolidry/broccolidry_shopping-cart/broccolidry_shopping-cart_flat-circle-white-on-black_512x512.png", size: "25x25"),
+            <%= link_to image_tag("shopping-cart", size: "18x18"),
                 '/cart', class: "navbar-brand" %>
           </div>
         </span>

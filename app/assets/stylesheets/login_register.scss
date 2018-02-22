@@ -21,6 +21,14 @@
     color: $white;
     background: $almostBlack;
     border-color: $almostBlack;
+    &:hover {
+        background: $yellow;
+        border: 1px solid $yellow;
+        color: $almostBlack;
+    }
+    &:focus {
+        outline: none;
+    }
 }
 
 #password {
@@ -31,3 +39,9 @@
     font-size: 10px;
 }
 
+.signup-register-link {
+    a {
+        color: $yellow;
+        text-decoration: none;
+    }
+}

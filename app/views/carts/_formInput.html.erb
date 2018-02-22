@@ -1,0 +1,44 @@
+<div id="address-form-div">
+        
+        Name: 
+        <%= text_field_tag 'name'+type, '', class: "form-control" %>
+        <br>
+        Address: 
+        <%= text_field_tag 'address'+type, '', class: "form-control" %>
+        <br>        
+        City: 
+        <%= text_field_tag 'city'+type, '', class: "form-control" %>
+        <br>
+        Region: 
+        <%= text_field_tag 'region'+type, '', class: "form-control" %>
+        <br>
+        Postal code:
+        <%= text_field_tag 'zip'+type, '', class: "form-control" %>
+        <br>
+        Country:
+        <%= select_tag 'country'+type, options_from_collection_for_select(Country.all, "id", "country"),
+        {id:"shoe-form-select", class: "form-control"} %>
+        <br>
+        Telephone: 
+        <%= text_field_tag 'telephone'+type, '', class: "form-control" %>
+
+</div>
+
+<script>
+  function validateaddressFunction() {
+    $("#new_address").validate({
+      debug: false,
+      rules: {
+        "address[name]": { required: true },
+        "address[city]": { required: true },
+        "address[address]": { required: true },
+        "address[region]": { required: true },
+        "address[zip]": { required: true },
+        "address[telephone]": { required: true },
+        "address[country_id]": { required: true },
+            }
+          })
+        }
+  $(document).ready(validateaddressFunction);
+  $(document).on('page:load', validateaddressFunction);
+</script>

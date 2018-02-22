@@ -1,20 +1,22 @@
 <div>
     FILTER
+    <br>
+    <br>    
     <%= form_tag do %>
-        Brend: <br>
-        <%= select_tag "brand" %>
+        Brand: <br>
+        <%= select_tag "brand", options_from_collection_for_select(Brand.all, "id", "brand"), {class: "form-control"} %>
         <br>
-        Velicina: <br>
-        <%= select_tag "size" %>
+        Size: <br>
+        <%= select_tag "size", options_from_collection_for_select(ShoeSize.all.order(:size), "id", "size"), {class: "form-control"} %>
         <br>
-        Boja: <br>
-        <%= select_tag "color" %>
+        Color: <br>
+        <%= select_tag "color", options_from_collection_for_select(Color.all, "id", "color"), {class: "form-control"} %>
         <br>
-        Stil: <br>
-        <%= select_tag "style" %>
+        Style: <br>
+        <%= select_tag "style", options_from_collection_for_select(Style.all, "id", "style"), {class: "form-control"} %>
         <br>
-        Cijena: <br>
-        <%= select_tag "price_range" %>
+        Price: <br>
+        <%= select_tag "price_range", {}, {class: "form-control"} %>
         <br>
     <% end %>
 </div>

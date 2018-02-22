@@ -4,14 +4,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "abhShoes" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Webshop" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js" %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js" %>
   </head>
   <body>
-    <header>
+    <div id="header" class="header-style-1">
       <%= render 'layouts/navigation' %>
-    </header>
+    </div>
+    <div id="body">
       <%= yield %>
+    </div>
+    <div id="footer">
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
+
+<script>
+    if (!document.getElementById("gallery")) {
+      document.getElementById("header").classList.add('header-style-1');
+      document.getElementById("header").classList.remove('header-style-2');
+    }
+    else {
+      document.getElementById("header").classList.add('header-style-2');
+      document.getElementById("header").classList.remove('header-style-1');
+    }
+</script>

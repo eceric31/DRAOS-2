@@ -1,1 +1,15 @@
-<%= render 'shoes/shoesTable' %>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-2">
+        <%= render 'shoes/filter'%>
+        </div>
+        <div class="col-xs-6">
+            <div>
+                <span class="pull-right">
+                    Price: 
+                </span>
+            </div>
+            <%= render 'shoes/shoesTable' %>
+        </div>
+    </div>
+</div>

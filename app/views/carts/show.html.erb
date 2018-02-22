@@ -1,56 +1,53 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-5 col-xs-offset-2">
-            <div id="cart-main-div">
-                <%= render "shoeList" %>
+            <div class="col-xs-5 col-xs-offset-2">
+                    <div id="cart-main-div">
+                        <%= render "shoeList" %>
+                    </div>
             </div>
-            <div id="cart-page-1" >
-                <div id="cart-shoe-list" style="display: none">
+            <div class="col-xs-3">
+                <%= render "receipt" %>
+                <%= form_tag 'charges#create' do %>
+                <div class="cart-buttons">
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                        data-description=""
+                        data-amount= "<%= ((current_order.subtotal + current_order.shipping) * 100) %>"
+                        data-locale="auto"
+                        data-label="PAY <%= (current_order.subtotal + current_order.shipping) %>KM"
+                        data-currency="BAM"></script>
+               
+                    <button class="cart-button-cancel cart-button btn "> 
+                        <%= link_to "Back", :action => :new, remote: true %>
+                    </button>
+
+                <% end %>
                 </div>
-            </div>
-            <div id="cart-page-2" style="display:none">
-                <div id="cart-shoe-list">
+
+<!--                <div id="cart-buttons-1" class="cart-buttons">
+                    <button class=" cart-button btn cart-button-continue"> 
+                        <%= link_to "Continue", :action => :new, remote: true %> 
+                    </button>
+                    <button class="cart-button-cancel cart-button btn "> 
+                        <%= link_to "Cancel", url_for(:back) %>
+                    </button>
                 </div>
-            </div>
-            <div id="cart-page-3" style="display: none">
-                <%= render :template => "charges/new", :locals => { :amount => current_order.subtotal + current_order.shipping } %> 
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <%= render "receipt" %>
 
-            <div id="cart-buttons-1" class="cart-buttons">
-                <button class=" cart-button btn cart-button-continue"> 
-                    <%= link_to "Continue", :controller => :addresses, :action => :new, remote: true %> 
-                </button>
-                <button class="cart-button-cancel cart-button btn "> 
-                    <%= link_to "Cancel", '/cart' %>
-                </button>
+                <div id="cart-buttons-2" class="cart-buttons" style="display:none">
+                    <%= submit_tag "Continue", :controller => :carts, :action => :create, remote: true, class: "cart-button btn cart-button-continue" %> 
+                    <button class="cart-button-cancel cart-button btn "> 
+                        <%= link_to "Cancel", '/cart' %>
+                    </button>
+                </div>
+                <div id="cart-buttons-3" class="cart-buttons">
+                </div> -->
             </div>
-
-            <div id="cart-buttons-2" class="cart-buttons" style="display:none">
-                <button class="cart-button btn cart-button-continue"> 
-                    <%= link_to "Continue", :controller => :addresses, :action => :index, remote: true %> 
-                </button>
-                <button class="cart-button-cancel cart-button btn "> 
-                    <%= link_to "Cancel", '/cart' %>
-                </button>
-            </div>
-
-            <div id="cart-buttons-3" class="cart-buttons" style="display:none">
-                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                    data-description=""
-                    data-amount= "<%= ((current_order.subtotal + current_order.shipping) * 100) %>"
-                    data-locale="auto"
-                    data-label="PAY <%= (current_order.subtotal + current_order.shipping) %>KM"
-                    data-currency="BAM"></script>
-                <button class="cart-button-cancel cart-button btn "> 
-                    <%= link_to "Cancel", '/cart' %>
-                </button>
-            </div>
-
-        </div>      
     </div>
 </div>
+
+<script>
+    if(document.getElementsByClassName("order-item").length === 0){
+        document.getElementsByClassName("stripe-button-el")[0].disabled=true;
+    }
+</script>

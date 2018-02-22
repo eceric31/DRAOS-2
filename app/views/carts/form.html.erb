@@ -1,15 +1,15 @@
 <div style="margin-bottom: 150px">
     <p style="font-size: 18px; margin: 20px"> Delivery Address </p>
-    <%= render "formInput", {:type => 1} %>
+    <%= render "formInput", {:type => "delivery"} %>
     <p style="font-size: 18px; margin: 20px; margin-top: 40px "> 
         Billing Address 
         <span style="font-size: 14px; margin-left: 20px">
-            <input type="checkbox" name="addressType" id="billing_address_checkbox" value="billing" checked >     
+            <%= check_box_tag 'addressType', 'billing', true, {id: "billing_address_checkbox"} %>    
             Use delivery address 
         </span>
     </p>
     <div id="billing-address-div" style="display: none">
-        <%= render "formInput", {:type => 2} %>
+        <%= render "formInput", {:type => "billing"} %>
     </div>
 </div>
 
