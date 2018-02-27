@@ -7,6 +7,16 @@
       </span>
       <div>
         <%= form_tag '/login', id: "login-form" do %>
+
+              <% if @error.length > 0 %>
+                <div id="error_explanation">
+                  <h2>Please try again:</h2>
+                  <ul>
+                      <li><%= @error %></li>
+                  </ul>
+                </div>
+              <% end %>  
+
           <div id="form" class="form-group">              
             EMAIL <br>
             <%= text_field_tag :email, "", required: true, class: "form-control" %>

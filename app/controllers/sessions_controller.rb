@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
     def new
+      @error = ""
     end
   
     def create
@@ -20,6 +21,7 @@ class SessionsController < ApplicationController
           end
           redirect_to '/'
         else
+          @error = "Incorrect email or password"
           render 'new'
         end
     end

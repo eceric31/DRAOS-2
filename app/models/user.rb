@@ -16,5 +16,5 @@ class User < ApplicationRecord
     validates :email, presence: true, length: { maximum: 255 },
                       format: { with: VALID_EMAIL_REGEX }, uniqueness: true
     
-    validates :password, presence: true, length: { minimum: 8, message: "Password must be at least 8 characters long" }
+    validates :password, presence: true, length: { minimum: 8, message: "must be at least 8 characters long" }
 end

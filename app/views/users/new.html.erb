@@ -6,20 +6,19 @@
         <%= link_to 'Login to your account', '/login' %>
       </span>
 
-      <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2>There were some errors:</h2>
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
       <div>
-        <%= form_with scope: :user, url: '/users', id: "registration-form" do |f| %>
-          <div id="form" class="form-group">              
+        <%= form_for @user, url: '/users', id: "registration-form" do |f| %>
+              <% if @user.errors.any? %>
+                <div id="error_explanation">
+                  <h2>Please try again:</h2>
+                  <ul>
+                    <% @user.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>  
+          <div id="form" class="form-group">            
             EMAIL <br> 
             <%= f.text_field :email, required: true, class: "form-control" %>
             <br>
@@ -41,7 +40,7 @@
 
 <script>
   function validateregitrationFunction() {
-    $("#registration-form").validate({
+    $("#new_user").validate({
       debug: false,
       rules: {
         "user[password]": { minlength: 8 },

@@ -30,15 +30,23 @@
     background: $almostBlack;
     border-color: $almostBlack;
     margin-bottom: 0;
+    height: 60px;
 }
 
 .navbar-default .navbar-brand {
     color: $white;
     font-size: 12px;
+    height: 58px;
+
 }
 
 .navbar-header {
-    height: 100%;
+    height: 60px;
+    &:hover {
+        a {
+            color: $yellow !important;
+        }
+    }
 }
 
 .navbar-brand-static {
@@ -50,7 +58,7 @@
 .navCategory{
     &:hover {
         color: $white !important;
-        border-bottom: 1px solid $mellowYellow !important;
+        border-bottom: 3px solid $mellowYellow !important;
     }
 }
 
