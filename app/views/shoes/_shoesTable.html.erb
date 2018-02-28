@@ -1,14 +1,13 @@
-<table id="shoeTable">
-    <% @shoes.find_in_batches(batch_size: 4) do |shoe_batch| %>
-        <tr>
+<% @shoes.find_in_batches(batch_size: 4) do |shoe_batch| %>
+    <div class="row">
         <% shoe_batch.each do |shoe| %>
-            <td>
+            <div class="col-xs-3">
                 <div id="shoeData">
                     <%= link_to image_tag(shoe.photo_url, size: "135x135"), shoe_path(shoe), id: "photoImg" %>
                 </div>
-            </td>
+            </div>
         <% end %>
-        <tr>
-    <% end %>
-</table>
+    </div>
+<% end %>
+
 
