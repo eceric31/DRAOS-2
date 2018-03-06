@@ -3,7 +3,13 @@ class OrderItemsController < ApplicationController
 
     def create
         @order = current_order
-        @order_item = @order.order_items.new(order_item_params)
+        o_i = OrderItem.new(order_item_params)
+        @order_item = @order.order_items.find_by_shoe_id_and_size(o_i.shoe_id, o_i.size)
+        unless @order_item.nil?
+            @order_item.quantity += o_i.quantity
+        else
+            @order_item = @order.order_items.new(order_item_params)
+        end
         if @order_item.save!
             if(params[:buy])
                 redirect_to '/cart'
@@ -14,14 +20,7 @@ class OrderItemsController < ApplicationController
             redirect_to '/'
         end
     end
-    
-    def update
-        @order = current_order
-        @order_item = @order.order_items.find(params[:id])
-        @order_item.update_attributes(order_item_params)
-        @order_items = @order.order_items
-    end
-    
+        
     def destroy
         @order = current_order
         @order_item = @order.order_items.find(params[:id])
@@ -31,6 +30,11 @@ class OrderItemsController < ApplicationController
     end
 private
     def order_item_params
-        params.fetch(:order_item, {}).permit(:quantity, :shoe_id, :size)
+        params.require(:order_item).permit(:quantity, :shoe_id, :size)
     end
+
+    def check
+
+    end
+
 end

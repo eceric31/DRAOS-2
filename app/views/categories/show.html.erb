@@ -1,15 +1,35 @@
-<div class="container">
+<div id="categoryContainer" class="container">
     <div class="row">
-        <div class="col-xs-2 col-xs-offset-2">
-        <%= render 'shoes/filter'%>
-        </div>
-        <div class="col-xs-6">
-            <div>
-                <span class="pull-right">
-                    Price: 
-                </span>
-            </div>
-            <%= render 'shoes/shoesTable' %>
-        </div>
+                <div class="col-xs-2 col-xs-offset-2">
+                    <%= render 'shoes/filter'%>
+                </div>
+                <div class="col-xs-6">
+                    <div style="height: 35px">
+                        <span class="pull-right">
+                            <div style="float: left">
+                            </div>
+                            <p class='categoryOrderBy'>
+                                Order by price:
+                            </p>
+                            <%= select_tag 'order_by', options_for_select(@orderBy), {id: 'category_sort_by', class: "form-control categoryOrderBy"} %>
+                        </span>
+                    </div>
+                    <div id="categoryShoeTable">
+                        <%= render 'shoes/shoesTable' %>
+                    </div>
+                </div>
     </div>
 </div>
+
+<script>
+    var s = window.location.href.split('/');
+    var current_url = '/' + s[s.length - 2] + '/' + s[s.length - 1];
+    $('#category_sort_by').on('change', function(){
+        $.ajax({ type: "GET",
+            url: current_url,
+            data: { sort: $('option:selected', this).val() }
+        }).done(function(data) {
+            console.log(data);
+        });
+    });
+</script>

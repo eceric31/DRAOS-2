@@ -7,7 +7,8 @@
         </div>
         <%= Category.find_each do |category| %>
           <div class="navbar-header">
-            <%= link_to category.category.upcase, "/categories/#{category.id}", class: "navCategory navbar-brand" %>
+            <%= link_to category.category.upcase, "/categories/#{category.id}", 
+              {id: "navCategory"+category.id.to_s, class: "navCategory navbar-brand"} %>
           </div>
         <% end %>
 

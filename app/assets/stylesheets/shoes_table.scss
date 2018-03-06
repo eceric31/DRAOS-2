@@ -1,21 +1,50 @@
+@import 'colors';
 
+.shoeTable {
+    margin-top: 30px;
+}
+
+.shoeTableRow {
+    margin-top: 20px;
+}
 
 #shoeData {
-    margin: 0 auto;
-    width: 50%;
+    margin: auto;
+    height: 90%;
+    width: 90%;
+    #shoeDataImgWrap {
+        position: relative;
+        &:hover {
+            #shoeDataInfo {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    #shoeDataInfo {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(74, 74, 78, 0.705);
+        color: $white;
+        visibility: hidden;
+        opacity: 0;
+        padding-top: 30%;
+        transition: opacity .2s, visibility .2s;
+        p {
+            text-align: center;
+            font-size: 100%;
+        }
+    }
 }
 
-#photoImg {
-    -webkit-filter: brightness(100%);
-}
 
-#photoImg:hover {
-    -webkit-filter: brightness(80%);
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
+
 
 

@@ -62,6 +62,11 @@
     }
 }
 
+.navCategorySelected {
+    color: $yellow !important;
+    border-bottom: 3px solid $mellowYellow !important;  
+}
+
 .navbar .navbar-nav > li > a {
     line-height: 150px;
 }

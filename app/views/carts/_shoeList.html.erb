@@ -2,7 +2,9 @@
 <% @order_items.each do |order_item|%>
     <div class="row order-item">
         <div class="col-xs-5 order-item-photo">
-            <%= image_tag(order_item.shoe.photo_url) %>
+            <%= link_to shoe_path(order_item.shoe) do %>
+                <%= image_tag(order_item.shoe.photo_url) %>
+            <% end %>
         </div>
         <div class="col-xs-4 order-item-info">
             Model: <%= order_item.shoe.model %> <br>

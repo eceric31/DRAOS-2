@@ -10,17 +10,32 @@
         <div class="col-xs-2 col-xs-offset-5">
             <div id="brand_select">
                 Featured Products <br>
-                <%= select("brand", "brand_id", Brand.all.collect {|b| [ b.brand, b.id ] }) %>
+                <%= select_tag "brand", 
+                options_from_collection_for_select(@brands, "id", "brand"), 
+                {id: 'indexBrandSelect', class: "form-control index-select-brand"} %>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-xs-8 col-xs-offset-2">
-            <%= render partial: "shoesTable", locals: {brandSearch: 1, styleSearch: nil} %>
+        <div id='indexShoeTable' class="col-xs-8 col-xs-offset-2">
+            <%= render partial: "shoesTable", locals: {title: 'none'} %>
         </div>
     </div>
 </div>
+
+<script>
+    $('#indexBrandSelect').on('change', function(){
+        $.ajax({ type: "GET",
+            url: '/'.js,
+            data: { sort: $('option:selected', this).val() },
+            dataType: 'script'
+        }).done(function(data) {
+            console.log(data);
+        });
+    });
+</script>
+
 
 
 

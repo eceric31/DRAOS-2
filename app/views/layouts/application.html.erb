@@ -33,4 +33,13 @@
       document.getElementById("header").classList.add('header-style-2');
       document.getElementById("header").classList.remove('header-style-1');
     }
+
+    if (!document.getElementById("categoryContainer")) {
+      //document.getElementById("navCategory").classList.remove('navCategorySelected');
+    }
+    else {
+      var s = window.location.href.split('/');
+      var current_cat = s[s.length-1]
+      document.getElementById("navCategory"+current_cat).classList.add('navCategorySelected');
+    }
 </script>
