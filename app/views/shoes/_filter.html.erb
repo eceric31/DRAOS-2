@@ -19,6 +19,7 @@
         <%= select_tag "price_range", options_for_select(@priceRanges), {class: "form-control"} %>
         <br>
         <%= submit_tag "SEARCH", id: "formButtonBuy", class: "btn btn-success" %>
-
     <% end %>
+        <br>
+        <%= link_to 'Remove filter', category_path, class: 'shoe-link'%>
 </div>

@@ -14,6 +14,9 @@
             </div>
             <div class="row" id="shoe-form-div">
                 <%= render "showForm" %>
+                <% flash.each do |key, value| %>
+                    <div id="shoe-alert" class="alert alert-<%= key %>"><%= value %></div>
+                <% end %>
             </div>
         </div>
     </div>

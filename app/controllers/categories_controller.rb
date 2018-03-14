@@ -27,16 +27,20 @@ class CategoriesController < ApplicationController
                 less_than = 1000000
                 more_than = 120
             end
-            @shoes = @category.shoes.where("brand_id = ? AND color_id = ? AND style_id = ? 
-                                    AND price < ? AND price > ?", 
-                            params[:brand], params[:color], params[:style], less_than, more_than)
-
-        elsif !params[:sort].nil?
-            puts 'here is sort' + params[:sort]
-            @shoes = @category.shoes.order(price: :desc)
+            @shoes = @category.shoes.joins(:shoe_sizes).where("brand_id = ? AND color_id = ? AND style_id = ? 
+                                    AND shoe_sizes.size = ? AND price < ? AND price > ?", 
+                            params[:brand], params[:color], params[:style], params[:size], less_than, more_than)
         else
             @shoes = @category.shoes
         end
+
+        if params[:sort] == '2'
+            puts 'here is sort' + params[:sort]
+            @shoes = @category.shoes.order(price: :desc)
+        elsif params[:sort] == '1'
+            @shoes = @category.shoes.order(:price)
+        end
+
     end
 
 end

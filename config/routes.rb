@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   post '/shoes/:id' => 'order_items#create'
 
   get 'cart' => 'carts#show'
+  get '/address/new' => 'addresses#new'
+  get '/addresses' => 'addresses#show'
 
   root to: 'shoes#index'
 

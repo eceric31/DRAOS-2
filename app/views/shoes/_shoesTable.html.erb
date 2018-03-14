@@ -1,26 +1,32 @@
 <div class="shoeTable">
+    <div class="row shoeTableRow">
+        <% for i in 0..(@shoes.length-1) %>
+            <div class="col-xs-3">
+                <div id="shoeData">
+                    <div id="shoeDataImgWrap">
+                        <%= image_tag(@shoes[i].photo_url) %>
+                        <div id="shoeDataInfo">
+                            <p><%= @shoes[i].model %></p>
+                            <b><p><%= @shoes[i].price %> KM</p></b>
+                        </div>
+                    </div>
+                    <% if local_assigns[:title].nil? %>
+                        <p style="margin-top: 5px; margin-left: 5px;"><%= @shoes[i].model %></p>
+                    <% end %>
+                </div>
+
+
+            </div>
+        <% end %>
+    <!-- 
     <% @shoes.find_in_batches(batch_size: 4) do |shoe_batch| %>
         <div class="row shoeTableRow">
             <% shoe_batch.each do |shoe| %>
-                <div class="col-xs-3">
-                    <%= link_to shoe_path(shoe) do %>
-                        <div id="shoeData">
-                            <div id="shoeDataImgWrap">
-                                <%= image_tag(shoe.photo_url) %>
-                                <div id="shoeDataInfo">
-                                    <p><%= shoe.model %></p>
-                                    <b><p><%= shoe.price %> KM</p></b>
-                                </div>
-                            </div>
-                        </div>
-                    <% end %>
-                    <% if local_assigns[:title].nil? %>
-                        <p style="margin-top: 5px; margin-left: 5px;"><%= shoe.model %></p>
-                    <% end %>
-                </div>
+
             <% end %>
         </div>
     <% end %>
-<div>
+    -->
+</div>
 
 

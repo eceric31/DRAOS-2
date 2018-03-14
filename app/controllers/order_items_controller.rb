@@ -14,7 +14,8 @@ class OrderItemsController < ApplicationController
             if(params[:buy])
                 redirect_to '/cart'
             else
-                redirect_back fallback_location: "/"
+                flash[:success] = "Added to cart!"                  
+                redirect_back(fallback_location: '/')
             end
         else
             redirect_to '/'

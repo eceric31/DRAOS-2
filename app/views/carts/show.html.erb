@@ -2,52 +2,81 @@
 <div class="container">
     <div class="row">
             <div class="col-xs-5 col-xs-offset-2">
+                          <% flash.each do |key, value| %>
+                            <div class="alert alert-<%= key %>"><%= value %></div>
+                        <% end %>
                     <div id="cart-main-div">
                         <%= render "shoeList" %>
                     </div>
             </div>
             <div class="col-xs-3">
                 <%= render "receipt" %>
-                <%= form_tag 'charges#create' do %>
-                <div class="cart-buttons">
-                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                        data-description=""
-                        data-amount= "<%= ((current_order.subtotal + current_order.shipping) * 100) %>"
-                        data-locale="auto"
-                        data-label="PAY <%= (current_order.subtotal + current_order.shipping) %>KM"
-                        data-currency="BAM"></script>
-               
-                    <button class="cart-button-cancel cart-button btn "> 
-                        <%= link_to "Back", :action => :new, remote: true %>
-                    </button>
+                    <div id="cart-buttons-1" class="cart-buttons">
+                        <button id="cart-button-continue1" class=" cart-button btn cart-button-continue"> 
+                            Continue
+                        </button>
+                        <button class="cart-button-cancel cart-button btn "> 
+                            <%= link_to "Cancel", url_for(:back) %>
+                        </button>
+                    </div>
 
-                <% end %>
-                </div>
+                    <div id="cart-buttons-2" class="cart-buttons" style="display:none">
+                        <button id="cart-button-continue2" class=" cart-button btn cart-button-continue"> 
+                            Continue
+                        </button> 
+                        <button id="cart-button-cancel2" class="cart-button-cancel cart-button btn "> 
+                            Back
+                        </button>
+                    </div>
 
-<!--                <div id="cart-buttons-1" class="cart-buttons">
-                    <button class=" cart-button btn cart-button-continue"> 
-                        <%= link_to "Continue", :action => :new, remote: true %> 
-                    </button>
-                    <button class="cart-button-cancel cart-button btn "> 
-                        <%= link_to "Cancel", url_for(:back) %>
-                    </button>
-                </div>
-
-                <div id="cart-buttons-2" class="cart-buttons" style="display:none">
-                    <%= submit_tag "Continue", :controller => :carts, :action => :create, remote: true, class: "cart-button btn cart-button-continue" %> 
-                    <button class="cart-button-cancel cart-button btn "> 
-                        <%= link_to "Cancel", '/cart' %>
-                    </button>
-                </div>
                 <div id="cart-buttons-3" class="cart-buttons">
-                </div> -->
+                </div> 
             </div>
     </div>
 </div>
 
 <script>
-    if(document.getElementsByClassName("order-item").length === 0){
-        document.getElementsByClassName("stripe-button-el")[0].disabled=true;
+    if(document.getElementById("cart-button-continue1") && document.getElementsByClassName("order-item").length === 0){
+        document.getElementById("cart-button-continue1").disabled=true;
     }
+
+    $('#cart-button-continue1').on('click', function(){
+        $.ajax({ type: "GET",
+            url: '/address/new',
+            data: { }
+        }).done(function(data) {
+            console.log(data);
+        });
+    });
+
+    $('#cart-button-continue2').on('click', function(){
+        $.ajax({ type: "GET",
+            url: '/addresses',
+            data: { }
+        }).done(function(data) {
+            console.log(data);
+        });
+    });
+
+    $('#cart-button-cancel2').on('click', function(){
+        $('#cart-main-div').html("<%=escape_javascript render(:partial => 'shoeList') %>");
+        $('#cart-buttons-2').hide();
+        $('#cart-buttons-1').show();
+        $('#cart-progress-bar').css('width', '25%');
+    });
+
+
+
+    $('#cart-button-cancel3').on('click', function(){
+        debuger;
+        $.ajax({ type: "GET",
+            url: '/address/new',
+            data: { }
+        }).done(function(data) {
+            console.log(data);
+        });
+        $("cart-buttons-3").html("");
+        $('#cart-buttons-3').hide();
+        $('#cart-buttons-2').show();
+    });
 </script>

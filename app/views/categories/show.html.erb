@@ -27,7 +27,8 @@
     $('#category_sort_by').on('change', function(){
         $.ajax({ type: "GET",
             url: current_url,
-            data: { sort: $('option:selected', this).val() }
+            data: { sort: $('option:selected', this).val() },
+            dataType: 'script'
         }).done(function(data) {
             console.log(data);
         });

@@ -1,4 +1,7 @@
 class ChargesController < ApplicationController
+     skip_before_action :verify_authenticity_token
+
+
     def new
     end
     
@@ -17,7 +20,8 @@ class ChargesController < ApplicationController
         :currency    => 'bam'
       )
       new_order
-
+      
+      flash[:success] = "Order succesfully placed!"
       redirect_to '/cart'
     
     rescue Stripe::CardError => e
