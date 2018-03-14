@@ -8,12 +8,21 @@
     margin-top: 20px;
 }
 
-#shoeData {
+.shoeDataLink {
+    color: $almostBlack;
+    text-decoration: none;
+    &:hover {
+        color: $almostBlack;
+        text-decoration: none;
+    }
+}
+
+.shoeData {
     margin: auto;
     height: 90%;
     width: 90%;
     margin-bottom: 20px;
-    #shoeDataImgWrap {
+    .shoeDataImgWrap {
         position: relative;
         &:hover {
             #shoeDataInfo {
@@ -26,7 +35,7 @@
             width: 100%;
         }
     }
-    #shoeDataInfo {
+    .shoeDataInfo {
         position: absolute;
         top: 0;
         bottom: 0;

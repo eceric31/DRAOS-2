@@ -1,1 +1,1 @@
-$('#indexShoeTable').html("<%= escape_javascript (render(:partial => 'shoes/shoesTable')) %>");
+$('#indexShoeTable').html("<%= escape_javascript (render partial: "shoesTable", locals: {title: 'none'}) %>");
