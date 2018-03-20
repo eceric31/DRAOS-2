@@ -35,7 +35,7 @@
 
 .navbar-default .navbar-brand {
     color: $white;
-    font-size: 12px;
+    font-size: 10px;
     height: 58px;
 
 }
@@ -69,4 +69,8 @@
 
 .navbar .navbar-nav > li > a {
     line-height: 150px;
+}
+
+#navbar-brand-main {
+    font-size: 12px;
 }

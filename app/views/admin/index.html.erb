@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div id="adminDashboard" class="row">
+                <div class="col-xs-1 adminDashboardItem">
+                    <p id="adminDashboardItemDashboard"> DASHBOARD </p>
+                </div>
+                <div class="col-xs-1 adminDashboardItem">
+                    <p id="adminDashboardItemShoes"> SHOES </p>
+                </div>
+                <div class="col-xs-1 adminDashboardItem">
+                    <p id="adminDashboardItemUsers"> USERS </p>
+                </div>
+            </div>
+
+            <div id="adminDashboardPanel">
+                <%= render partial: 'shoesTable' %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function shoesTable() {
+        alert("evo me!");
+            $('#adminDashboardPanel').html("<%= escape_javascript render(partial: 'shoesTable')%>");
+    };
+    function dashboard() {
+        $('#adminDashboardPanel').html("<%= escape_javascript render(partial: 'index')%>");
+    };
+
+    $('#adminDashboardItemShoes').on('click', shoesTable);
+    $('#adminDashboardItemDashboard').on('click', dashboard);
+
+    
+</script>

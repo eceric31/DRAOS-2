@@ -1,0 +1,58 @@
+// Place all the styles related to the Admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'colors';
+
+#adminDashboard {
+    background: $lightGray;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 10px;
+    padding-top: 20px;
+    width: 100%;
+
+    .adminDashboardItem {
+        display: inline-block;
+        margin-left: 10px;
+        width: auto;
+        p {
+            &:hover {
+                color: $mellowYellow;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.adminIndexItem {
+    align-content: center;
+
+    .adminIndexItemNumber {
+        align-content: center;
+        border: 1px solid $gray;
+        background: $lightGray;
+        margin: 20 auto;
+        width: 50%;
+        p {
+            font-size: 20px;
+            margin: 20px auto;
+            width: 30%;
+        }
+    }
+}
+
+.adminButton {
+    background: $yellow;
+    border: 1px solid $lightGray !important;
+    border-radius: 5% !important;
+    color: $gray !important;
+    font-size: 10px !important;
+    font-weight: bold !important;
+
+    &:hover {
+        color: $almostBlack;
+        border: 1px solid $almostBlack !important;
+        border-radius: 5% !important;
+    }
+}

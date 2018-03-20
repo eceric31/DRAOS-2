@@ -1,0 +1,23 @@
+<h1>Products</h1>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><%= sort_link "id" %></th>
+      <th><%= sort_link "model" %></th>
+      <th><%= sort_link "category_id" %></th>
+      <th><%= sort_link "brand_id" %></th>
+      <th><%= sort_link "created_at", "Added On" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shoes.each do |shoe| %>
+      <tr>
+        <td><%= shoe.id %></td>
+        <td><%= shoe.model %></td>
+        <td><%= shoe.category.category %></td>
+        <td><%= shoe.brand.brand %></td>
+        <td><%= shoe.created_at.strftime "%B %e, %Y" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

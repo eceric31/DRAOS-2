@@ -25,7 +25,7 @@
     .shoeDataImgWrap {
         position: relative;
         &:hover {
-            #shoeDataInfo {
+            .shoeDataInfo {
                 visibility: visible;
                 opacity: 1;
             }

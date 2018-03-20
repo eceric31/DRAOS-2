@@ -13,6 +13,7 @@ class AddressesController < ApplicationController
     end
 
     def index
+        puts params[:name]
         respond_to do |format|
             format.js
         end

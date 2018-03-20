@@ -1,0 +1,26 @@
+
+<div id="adminIndex" class="row">
+    <div class="adminIndexItem col-xs-6">
+        <div id="adminIndexShoes" class="adminIndexItemNumber">
+            <p> <%= @shoes.length %> </p>
+            <p> shoes </p>
+        </div>
+        <button class="btn adminButton">
+            ADD SHOES
+        </button>
+    </div>
+    <div id="adminIndexUsers" class="adminIndexItem col-xs-6">
+        <div class="adminIndexItemNumber">
+            <p> <%= @users.length %> </p>
+            <p> users </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function shoesTableFromWithin() {
+        $('#adminDashboardPanel').html("<%= escape_javascript render(partial: 'shoesTable')%>");
+    };
+
+    $('#adminIndexShoes').on('click', shoesTableFromWithin);
+</script>

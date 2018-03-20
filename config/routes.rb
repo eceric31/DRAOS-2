@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :carts
   post '/cart' => 'carts#create'
 
+  resources :admin
 
   resources :order_items, only: [:create, :update, :destroy]
 
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
 
   get 'cart' => 'carts#show'
   get '/address/new' => 'addresses#new'
-  get '/addresses' => 'addresses#show'
+  get '/addresses' => 'addresses#index'
 
   root to: 'shoes#index'
 

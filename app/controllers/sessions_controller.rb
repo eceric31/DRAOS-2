@@ -19,7 +19,13 @@ class SessionsController < ApplicationController
           else
             cookies[:auth_token] = user.auth_token
           end
+
+          if admin_user
+            redirect_to '/admin'
+          else
           redirect_to '/'
+          end
+          
         else
           @error = "Incorrect email or password"
           render 'new'
