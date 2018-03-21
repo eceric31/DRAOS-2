@@ -19,8 +19,12 @@ class ChargesController < ApplicationController
         :description => 'Rails Stripe customer',
         :currency    => 'bam'
       )
-      new_order
       
+      
+      UserNotifierMailer.send_purchase_confirmation_email(current_user, current_order).deliver
+      
+      new_order
+
       flash[:success] = "Order succesfully placed!"
       redirect_to '/cart'
     

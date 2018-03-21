@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for your purchase!</h1>
+    <h1>You have bought the following items:</h1>
+    <% @order.order_items.each do |item| %>
+      <h2> <%= item.shoe.model %> </h2>
+      <p> Size: <%= item.size %> </p>
+      <p> Price: <%= item.shoe.price %> </p>
+      <p> Color: <%= item.shoe.color.color %> </p>
+      <p> Quantity: <%= item.quantity %> </p>
+    <% end %>
+    <h1>You have been charged: <%= @order.subtotal +  @order.shipping %> KM </h2>
+  </body>
+</html>

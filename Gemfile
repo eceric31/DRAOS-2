@@ -60,5 +60,6 @@ gem 'autoprefixer-rails'
 gem 'jquery-rails' 
 gem 'rails_12factor', group: :production
 gem 'stripe'
+gem 'figaro'
 
 ruby "2.4.3"

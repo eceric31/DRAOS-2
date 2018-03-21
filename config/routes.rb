@@ -2,9 +2,15 @@ Rails.application.routes.draw do
 
   get 'address/form'
 
-  resources :users, :sessions, :shoes, :categories
+  resources :sessions, :shoes, :categories
   resources :addresses
   resources :charges
+
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
 
   resources :carts
   post '/cart' => 'carts#create'

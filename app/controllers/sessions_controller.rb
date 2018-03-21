@@ -8,24 +8,30 @@ class SessionsController < ApplicationController
 
         if user && user.authenticate(params[:password])
 
-          order = Order.find_by_user_id_and_order_status_id(user.id, 1)
-          if order.nil?
-            order = user.orders.new(order_status_id: 1, shipping: 30)
-            order.save
-          end
-
-          if params[:remember_me]
-            cookies.permanent[:auth_token] = user.auth_token
+          if user.email_confirmed
+            order = Order.find_by_user_id_and_order_status_id(user.id, 1)
+            if order.nil?
+              order = user.orders.new(order_status_id: 1, shipping: 30)
+              order.save
+            end
+  
+            if params[:remember_me]
+              cookies.permanent[:auth_token] = user.auth_token
+            else
+              cookies[:auth_token] = user.auth_token
+            end
+  
+            if admin_user
+              redirect_to '/admin'
+            else
+              redirect_to '/'
+            end
           else
-            cookies[:auth_token] = user.auth_token
+            @error = 'Please activate your account by following the 
+            instructions in the account confirmation email you received to proceed'
+            render 'new'
           end
-
-          if admin_user
-            redirect_to '/admin'
-          else
-          redirect_to '/'
-          end
-          
+         
         else
           @error = "Incorrect email or password"
           render 'new'

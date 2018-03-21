@@ -2,16 +2,16 @@
 <div class="container">
     <div class="row">
             <div class="col-xs-5 col-xs-offset-2">
-                          <% flash.each do |key, value| %>
-                            <div class="alert alert-<%= key %>"><%= value %></div>
-                        <% end %>
+                    <% flash.each do |key, value| %>
+                        <div class="alert alert-<%= key %>"><%= value %></div>
+                    <% end %>
                     <div id="cart-main-div">
                         <%= render "shoeList" %>
                     </div>
             </div>
             <div class="col-xs-3">
                 <%= render "receipt" %>
-                    <div id="cart-buttons-1" class="cart-buttons">
+                    <!-- <div id="cart-buttons-1" class="cart-buttons">
                         <button id="cart-button-continue1" class=" cart-button btn cart-button-continue"> 
                             Continue
                         </button>
@@ -27,9 +27,10 @@
                         <button id="cart-button-cancel2" class="cart-button-cancel cart-button btn "> 
                             Back
                         </button>
-                    </div>
+                    </div> -->
 
                 <div id="cart-buttons-3" class="cart-buttons">
+                    <%= render template: 'charges/stripeButtons'%>
                 </div> 
             </div>
     </div>
