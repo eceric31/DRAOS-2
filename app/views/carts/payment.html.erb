@@ -26,7 +26,7 @@
         <div class="col-xs-3">
             <%= render "receipt" %>
             <div id="cart-buttons-1" class="cart-buttons">
-                <%= form_tag 'charges#create' do %>
+                <%= form_tag '/charges' do %>
                     <div class="cart-buttons">
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"

@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   end
 
   resources :admin, :only => [:index, :shoes, :users, :shoeCreate]
-
   get '/admin/users' => 'admin#users'
   get '/admin/shoes' => 'admin#shoes'
   get '/admin/shoes/create' => 'admin#shoeCreate'
@@ -21,7 +20,7 @@ Rails.application.routes.draw do
   resources :carts, :only => [:show, :addresses, :payment]
   get '/cart/addresses' => 'carts#addresses'
   get '/cart/payment' => 'carts#payment'
-  
+  get 'cart' => 'carts#show'
 
   resources :order_items, only: [:create, :update, :destroy]
 
@@ -35,7 +34,7 @@ Rails.application.routes.draw do
   get '/' => 'shoes#index'
   post '/shoes/:id' => 'order_items#create'
 
-  get 'cart' => 'carts#show'
+
   get '/address/new' => 'addresses#new'
   get '/addresses' => 'addresses#index'
 
