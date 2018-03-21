@@ -21,6 +21,7 @@ class ShoesController < ApplicationController
     end
 
     def create
+        redirect_to '/admin/shoes'
     end
 
     def destroy

@@ -1,0 +1,48 @@
+<div class="row">
+    <div id="shoeCreateForm" class="col-xs-10 col-xs-offset-1">
+        <%= form_tag "/shoes", id: "addressesForm" do %>
+        <div class="row">
+            <div class="col-xs-6">
+                <br>
+                Name:
+                <%= text_field_tag 'model', '', class: "form-control" %>
+                <br>
+                Description:
+                <%= text_area :description, :text, class: "form-control" %>
+                <br>
+                Price:
+                <%= text_field_tag 'price', '', class: "form-control" %>
+                <br>
+                Brand:
+                <%= select_tag 'country', options_from_collection_for_select(@brands, "id", "brand"),
+                    {id:"shoe-form-select", class: "form-control"} %>
+                <br>
+                Category:
+                <%= select_tag 'category', options_from_collection_for_select(@categories, "id", "category"),
+                    {id:"shoe-form-select", class: "form-control"} %>
+                <br>
+                Style:
+                <%= select_tag 'style', options_from_collection_for_select(@styles, "id", "style"),
+                    {id:"shoe-form-select", class: "form-control"} %>
+                <br>
+                <br>
+                
+            </div>
+            <div class="col-xs-6">
+                <br>
+                <br>
+                <%= image_tag '', size: "250x250" %>
+                <br>
+                <br>
+                <br>
+                Link to image:
+                <%= text_field_tag 'photo_url', '', class: "form-control" %>
+                <br>
+
+                <%= submit_tag "Continue", class:" cart-button btn cart-button-continue" %>
+                <%= link_to "Back", :back, {id: "cart-button-continue1", class:" cart-button btn cart-button-cancel"} %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

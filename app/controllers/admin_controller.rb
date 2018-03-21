@@ -16,6 +16,12 @@ class AdminController < ApplicationController
       @shoes = Shoe.order("#{sort_column} #{sort_direction}")
     end
 
+    def shoeCreate
+      @brands = Brand.all
+      @styles = Style.all
+      @categories = Category.all
+    end
+
 
   private
     def sortable_columns

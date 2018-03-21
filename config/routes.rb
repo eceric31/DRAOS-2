@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   resources :addresses
   resources :charges
 
-  resources :users, :only => [:confirm_email, :new, :create, :destroy]
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
 
   resources :admin, :only => [:index, :shoes, :users, :shoeCreate]
 
