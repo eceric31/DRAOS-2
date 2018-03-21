@@ -20,6 +20,16 @@ class ShoesController < ApplicationController
         @shoes = @style.shoes;
     end
 
+    def create
+    end
+
+    def destroy
+        @shoe = Shoe.find(params[:id])
+        @shoe.destroy
+
+        redirect_to '/admin/shoes'
+    end
+
     def addToCart
         if params[:buy]
             redirect_to '/cart'

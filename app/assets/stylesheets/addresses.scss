@@ -3,7 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-#address-form-div {
+.address-form-div {
     margin-left: 20px;
     width: 80%;
+}
+
+.addressReview {
+    float: left;
+    width: 45%;
+    margin-left: 5%;
 }

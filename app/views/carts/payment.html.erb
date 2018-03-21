@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row" style="margin-bottom: 150px">
+        <div class="col-xs-5 col-xs-offset-2">
+            <div id="cart-main-div">
+                <p style="font-size: 18px; margin-left: 20px"> Confirmation and payment </p>
+                <br>
+
+                <div class="addressReview">
+                    <h4> Delivery Address </h4>
+                    <p> <%= @deliveryAddress.name %> </p>
+                    <p> <%= @deliveryAddress.address %> </p>
+                    <p> <%= @deliveryAddress.city %>, <%= @deliveryAddress.region%> <%= @deliveryAddress.zip%></p>
+                    <p> <%= @deliveryAddress.country.country %>
+                    <p> Phone: <%= @deliveryAddress.telephone %> </p>
+                </div>
+                <div class="addressReview">
+                    <h4> Billing Address </h4>
+                    <p> <%= @billingAddress.name %> </p>
+                    <p> <%= @billingAddress.address %> </p>
+                    <p> <%= @billingAddress.city %>, <%= @billingAddress.region%> <%= @billingAddress.zip%></p>
+                    <p> <%= @billingAddress.country.country %>
+                    <p> Phone: <%= @billingAddress.telephone %> </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <%= render "receipt" %>
+            <div id="cart-buttons-1" class="cart-buttons">
+                <%= form_tag 'charges#create' do %>
+                    <div class="cart-buttons">
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                        data-description=""
+                        data-amount= "<%= ((current_order.subtotal + current_order.shipping) * 100) %>"
+                        data-locale="auto"
+                        data-label="PAY <%= (current_order.subtotal + current_order.shipping) %>KM"
+                        data-currency="BAM"></script>
+                <% end %>
+                <%= link_to "Back", '/cart/addresses', {id: "cart-button-continue1", class:" cart-button btn cart-button-cancel"} %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#cart-progress-bar').css('width', '100%');
+</script>

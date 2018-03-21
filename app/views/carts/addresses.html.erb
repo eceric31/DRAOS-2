@@ -1,0 +1,123 @@
+<div class="container">
+    <%= form_tag "/addresses", id: "addressesForm" do %>
+    <div class="row">
+        <div class="col-xs-5 col-xs-offset-2">
+            <div id="cart-main-div">
+                <div style="margin-bottom: 150px">
+                    <p style="font-size: 18px; margin-bottom: 20px"> Delivery Address </p>
+
+                   
+                    <div class="address-form-div">
+                            
+                            Name: 
+                            <%= text_field_tag 'name', @deliveryAddress ? @deliveryAddress.name : '', 
+                                class: "form-control" %>
+                            <br>
+                            Address: 
+                            <%= text_field_tag 'address',  @deliveryAddress ? @deliveryAddress.address : '', class: "form-control" %>
+                            <br>        
+                            City: 
+                            <%= text_field_tag 'city',  @deliveryAddress ? @deliveryAddress.city : '', class: "form-control" %>
+                            <br>
+                            Region: 
+                            <%= text_field_tag 'region',  @deliveryAddress ? @deliveryAddress.region : '', class: "form-control" %>
+                            <br>
+                            Postal code:
+                            <%= text_field_tag 'zip',  @deliveryAddress ? @deliveryAddress.zip : '', class: "form-control" %>
+                            <br>
+                            Country:
+                            <%= select_tag 'country', options_from_collection_for_select(@countries, "id", "country", @deliveryAddress ? @deliveryAddress.country_id : 1),
+                            {id:"shoe-form-select", class: "form-control"} %>
+                            <br>
+                            Telephone: 
+                            <%= text_field_tag 'telephone',  @deliveryAddress ? @deliveryAddress.telephone : '', class: "form-control" %>
+
+                    </div>
+
+                    <p style="font-size: 18px; margin: 20px; margin-top: 40px "> 
+                        Billing Address 
+                        <span style="font-size: 14px; margin-left: 20px">
+                            <%= check_box_tag 'addressType', 'billing', true, {id: "billing_address_checkbox"} %>    
+                            Use delivery address 
+                        </span>
+                    </p>
+                    <div id="billing-address-div" style="display: none">
+                        <div class="address-form-div">
+                            
+                            Name: 
+                            <%= text_field_tag 'name2', @billingAddress ? @billingAddress.name : '', class: "form-control" %>
+                            <br>
+                            Address: 
+                            <%= text_field_tag 'address2', @billingAddress ? @billingAddress.address : '', class: "form-control" %>
+                            <br>        
+                            City: 
+                            <%= text_field_tag 'city2', @billingAddress ? @billingAddress.city : '', class: "form-control" %>
+                            <br>
+                            Region: 
+                            <%= text_field_tag 'region2', @billingAddress ? @billingAddress.region : '', class: "form-control" %>
+                            <br>
+                            Postal code:
+                            <%= text_field_tag 'zip2', @billingAddress ? @billingAddress.zip : '', class: "form-control" %>
+                            <br>
+                            Country:
+                            <%= select_tag 'country2', options_from_collection_for_select(@countries, "id", "country", @billingAddress ? @billingAddress.country_id : 1),
+                            {id:"shoe-form-select", class: "form-control"} %>
+                            <br>
+                            Telephone: 
+                            <%= text_field_tag 'telephone2', @billingAddress ? @billingAddress.telephone : '', class: "form-control" %>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <%= render "receipt" %>
+            <div id="cart-buttons-1" class="cart-buttons">
+
+                <%= submit_tag "Continue", class:" cart-button btn cart-button-continue" %>
+
+                <%= link_to "Back", '/cart', {id: "cart-button-continue1", class:" cart-button btn cart-button-cancel"} %>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+
+<script type="text/javascript">
+  $('#cart-progress-bar').css('width', '70%');
+
+  var checkbox = document.getElementById('billing_address_checkbox');
+  checkbox.onchange = function() {
+     if(this.checked) {
+       $('#billing-address-div').hide();
+     } else {
+       $('#billing-address-div').show();
+     }
+  };
+
+
+    function validateaddressFunction() {
+    $("#addressesForm").validate({
+      debug: false,
+      rules: {
+        "name": { required: true },
+        "city": { required: true },
+        "address": { required: true },
+        "region": { required: true },
+        "zip": { required: true, digits: true, minlength: 4},
+        "telephone": { required: true, digits: true, minlegth: 9 },
+        "country": { required: true },
+        "name2": { required: true },
+        "city2": { required: true },
+        "address2": { required: true },
+        "region2": { required: true },
+        "zip2": { required: true, digits: true, minlength: 4},
+        "telephone2": { required: true, digits: true, minlegth: 9},
+        "country2": { required: true }
+            }
+          })
+        }
+  $(document).ready(validateaddressFunction);
+  $(document).on('page:load', validateaddressFunction);
+</script>

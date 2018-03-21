@@ -4,14 +4,23 @@ class AdminController < ApplicationController
 
 
     def index
-        @shoes = Shoe.order("#{sort_column} #{sort_direction}")
+        @shoes = Shoe.all
         @users = User.where("id != ?", current_user.id)
+    end
+
+    def users
+      @users = User.where("id != ?", current_user.id).order("#{sort_column} #{sort_direction}")
+    end
+
+    def shoes
+      @shoes = Shoe.order("#{sort_column} #{sort_direction}")
     end
 
 
   private
     def sortable_columns
-      ["id", "model", "category_id", "brand_id", "created_at"]
+      ["id", "model", "category_id", "brand_id",  "price",
+        "email", "email_confirmed", "role_id", "created_at"]
     end
   
     def sort_column

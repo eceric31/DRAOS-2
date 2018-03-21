@@ -1,41 +1,25 @@
-
 <div class="container">
     <div class="row">
-            <div class="col-xs-5 col-xs-offset-2">
-                    <% flash.each do |key, value| %>
-                        <div class="alert alert-<%= key %>"><%= value %></div>
-                    <% end %>
-                    <div id="cart-main-div">
-                        <%= render "shoeList" %>
-                    </div>
+        <div class="col-xs-5 col-xs-offset-2">
+            <% flash.each do |key, value| %>
+                <div class="alert alert-<%= key %>"><%= value %></div>
+            <% end %>
+            <div id="cart-main-div">
+                <%= render "shoeList" %>
             </div>
-            <div class="col-xs-3">
-                <%= render "receipt" %>
-                    <!-- <div id="cart-buttons-1" class="cart-buttons">
-                        <button id="cart-button-continue1" class=" cart-button btn cart-button-continue"> 
-                            Continue
-                        </button>
-                        <button class="cart-button-cancel cart-button btn "> 
-                            <%= link_to "Cancel", url_for(:back) %>
-                        </button>
-                    </div>
-
-                    <div id="cart-buttons-2" class="cart-buttons" style="display:none">
-                        <button id="cart-button-continue2" class=" cart-button btn cart-button-continue"> 
-                            Continue
-                        </button> 
-                        <button id="cart-button-cancel2" class="cart-button-cancel cart-button btn "> 
-                            Back
-                        </button>
-                    </div> -->
-
-                <div id="cart-buttons-3" class="cart-buttons">
-                    <%= render template: 'charges/stripeButtons'%>
-                </div> 
+        </div>
+        <div class="col-xs-3">
+            <%= render "receipt" %>
+            <div id="cart-buttons-1" class="cart-buttons">
+                <%= link_to "Continue", 'cart/addresses',
+                    {id: "cart-button-continue1", class:" cart-button btn cart-button-continue"} %>
             </div>
+        </div>
     </div>
 </div>
 
 <script>
-
+    if(document.getElementById("cart-button-continue1") && document.getElementsByClassName("order-item").length === 0){
+        $("#cart-button-continue1").on('click', function() { return false; });
+    }
 </script>

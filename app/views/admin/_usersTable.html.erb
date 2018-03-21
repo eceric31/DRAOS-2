@@ -1,0 +1,40 @@
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><%= sort_link "id", "ID" %></th>
+      <th><%= sort_link "email" %></th>
+      <th><%= sort_link "created_at", "Registration Date" %></th>
+      <th><%= sort_link "role_id", "Administrator"%></th>
+      <th><%= sort_link "email_confirmed", "Activated"%></th>
+      <th> Options </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+
+        <td><%= user.created_at.strftime "%B %e, %Y" %></td>
+
+        <% if user.role.role == 'Admin'%>
+          <td> Yes </td>
+        <% else %>
+          <td> No </td>
+        <% end %>
+        <td><%= user.email_confirmed%> </th>
+        
+        <td>
+          <% if user.role_id == 2 %>
+            <%= link_to user, action: 'upgrade', data: { confirm: 'Are you sure you want to upgrade this user to adminsitrator?' } do %>
+              <span class="glyphicon glyphicon-pencil"></span>
+            <% end %>
+          <% end %>
+          <%= link_to user, method: :delete,  data: { confirm: 'Are you sure you want to delete this user?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

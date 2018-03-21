@@ -6,16 +6,18 @@ Rails.application.routes.draw do
   resources :addresses
   resources :charges
 
-  resources :users do
-    member do
-      get :confirm_email
-    end
-  end
+  resources :users, :only => [:confirm_email, :new, :create, :destroy]
 
-  resources :carts
-  post '/cart' => 'carts#create'
+  resources :admin, :only => [:index, :shoes, :users, :shoeCreate]
 
-  resources :admin
+  get '/admin/users' => 'admin#users'
+  get '/admin/shoes' => 'admin#shoes'
+  get '/admin/shoes/create' => 'admin#shoeCreate'
+
+  resources :carts, :only => [:show, :addresses, :payment]
+  get '/cart/addresses' => 'carts#addresses'
+  get '/cart/payment' => 'carts#payment'
+  
 
   resources :order_items, only: [:create, :update, :destroy]
 
