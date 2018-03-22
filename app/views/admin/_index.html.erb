@@ -1,26 +1,25 @@
 
 <div id="adminIndex" class="row">
-    <div class="adminIndexItem col-xs-6">
-        <div id="adminIndexShoes" class="adminIndexItemNumber">
-            <p> <%= @shoes.length %> </p>
-            <p> shoes </p>
+    <div class="col-xs-6">
+        <%= link_to 'admin/shoes' do %>
+            <div class="adminIndexItem">
+                <div class="bubble">
+                    <p> <%= @shoes.length %> shoes</p>
+                </div>
+            </div>
+        <% end %>
+        <div style="width:85%; margin:0 auto;">
+            <%= link_to 'ADD SHOES', '/admin/shoes/create', class: "btn adminButton" %>
         </div>
-        <button class="btn adminButton">
-            ADD SHOES
-        </button>
     </div>
-    <div id="adminIndexUsers" class="adminIndexItem col-xs-6">
-        <div class="adminIndexItemNumber">
-            <p> <%= @users.length %> </p>
-            <p> users </p>
-        </div>
+    <div class="col-xs-6">
+        <%= link_to 'admin/users' do %>
+            <div class="adminIndexItem">
+                <div class="bubble">
+                    <p> <%= @users.length %> users </p>
+                </div>
+            </div>
+        <% end %>
     </div>
 </div>
 
-<script>
-    function shoesTableFromWithin() {
-        $('#adminDashboardPanel').html("<%= escape_javascript render(partial: 'shoesTable')%>");
-    };
-
-    $('#adminIndexShoes').on('click', shoesTableFromWithin);
-</script>

@@ -16,6 +16,13 @@ class UsersController < ApplicationController
         end
     end
 
+    def upgrade
+        @user = User.find(params[:id])
+        @user.update_attribute(:role_id, 1)
+        @user.save
+        redirect_to '/admin/users'
+    end
+
     def destroy
         @user = User.find(params[:id])
         @user.destroy

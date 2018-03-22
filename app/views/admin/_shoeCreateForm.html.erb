@@ -1,6 +1,6 @@
 <div class="row">
     <div id="shoeCreateForm" class="col-xs-10 col-xs-offset-1">
-        <%= form_tag "/shoes", id: "addressesForm" do %>
+        <%= form_tag "/shoes", id: "shoeCreateFormForm" do %>
         <div class="row">
             <div class="col-xs-6">
                 <br>
@@ -14,7 +14,7 @@
                 <%= text_field_tag 'price', '', class: "form-control" %>
                 <br>
                 Brand:
-                <%= select_tag 'country', options_from_collection_for_select(@brands, "id", "brand"),
+                <%= select_tag 'brand', options_from_collection_for_select(@brands, "id", "brand"),
                     {id:"shoe-form-select", class: "form-control"} %>
                 <br>
                 Category:
@@ -25,24 +25,59 @@
                 <%= select_tag 'style', options_from_collection_for_select(@styles, "id", "style"),
                     {id:"shoe-form-select", class: "form-control"} %>
                 <br>
+                Color:
+                <%= select_tag 'color', options_from_collection_for_select(@colors, "id", "color"),
+                    {id:"shoe-form-select", class: "form-control"} %>
+                <br>
                 <br>
                 
             </div>
             <div class="col-xs-6">
                 <br>
                 <br>
-                <%= image_tag '', size: "250x250" %>
+                <%= image_tag '', size: "250x250", id: "shoeFormImage" %>
                 <br>
                 <br>
                 <br>
                 Link to image:
                 <%= text_field_tag 'photo_url', '', class: "form-control" %>
                 <br>
-
-                <%= submit_tag "Continue", class:" cart-button btn cart-button-continue" %>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <%= submit_tag "Save", class:" cart-button btn cart-button-continue" %>
                 <%= link_to "Back", :back, {id: "cart-button-continue1", class:" cart-button btn cart-button-cancel"} %>
             </div>
         </div>
         <% end %>
     </div>
 </div>
+
+<script type="text/javascript">
+
+    function validateaddressFunction() {
+    $("#shoeCreateFormForm").validate({
+      debug: false,
+      rules: {
+        "model": { required: true },
+        "description[text]": { required: true },
+        "price": { required: true, pattern: /^(\d+|\d+,\d{1,2})$/ },
+        "photo_url": { required: true },
+        "brand": { required: true},
+        "category": { required: true },
+        "style": { required: true },
+        "color": { required: true }
+            }
+          })
+        }
+  $(document).ready(validateaddressFunction);
+  $(document).on('page:load', validateaddressFunction);
+
+
+  $('#photo_url').on('input',function(e){
+    var str = $('#photo_url').val();
+    $('#shoeFormImage').attr('src', str);
+});
+</script>

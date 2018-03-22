@@ -1,4 +1,4 @@
-<table class="table table-bordered table-striped">
+<table id="adminTable" class="table table-bordered table-striped">
   <thead>
     <tr>
       <th><%= sort_link "id", "ID" %></th>
@@ -26,7 +26,7 @@
         
         <td>
           <% if user.role_id == 2 %>
-            <%= link_to user, action: 'upgrade', data: { confirm: 'Are you sure you want to upgrade this user to adminsitrator?' } do %>
+            <%= link_to upgrade_user_path(user.id), data: { confirm: 'Are you sure you want to upgrade this user to adminsitrator?' } do %>
               <span class="glyphicon glyphicon-pencil"></span>
             <% end %>
           <% end %>

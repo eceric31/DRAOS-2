@@ -20,12 +20,13 @@ class AdminController < ApplicationController
       @brands = Brand.all
       @styles = Style.all
       @categories = Category.all
+      @colors = Color.all
     end
 
 
   private
     def sortable_columns
-      ["id", "model", "category_id", "brand_id",  "price",
+      ["id", "model", "category_id", "brand_id", "style_id", "color_id",  "price",
         "email", "email_confirmed", "role_id", "created_at"]
     end
   

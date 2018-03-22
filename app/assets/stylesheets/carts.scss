@@ -81,6 +81,7 @@
 
 .cart-button-cancel {
     background: $white;
+    color: $almostBlack;
     &:hover {
         background: $lightGray;
         border: 1px solid $lightGray !important;
@@ -106,6 +107,7 @@
 
 .cart-button-continue {
     background: $almostBlack;
+    color: $white;
     &:hover {
         background: $yellow;
         border: 1px solid $yellow !important;

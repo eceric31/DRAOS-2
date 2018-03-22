@@ -8,40 +8,70 @@
     background: $lightGray;
     font-size: 11px;
     font-weight: bold;
+    height: 40px;
     margin-bottom: 20px;
-    padding: 10px;
-    padding-top: 20px;
+    padding-top: 10px;
     width: 100%;
 
     .adminDashboardItem {
         display: inline-block;
         margin-left: 10px;
         width: auto;
-        p {
+        a {
+            color: $almostBlack;
             &:hover {
                 color: $mellowYellow;
                 cursor: pointer;
+                text-decoration: none;
             }
         }
     }
 }
 
-.adminIndexItem {
-    align-content: center;
-
-    .adminIndexItemNumber {
+#adminIndex{
+    a {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .adminIndexItem {
         align-content: center;
         border: 1px solid $gray;
         background: $lightGray;
-        margin: 20 auto;
-        width: 50%;
-        p {
-            font-size: 20px;
-            margin: 20px auto;
-            width: 30%;
+        height: 150px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        width: 85%;
+
+        .bubble { 
+            position: absolute; 
+            left: 42%;
+            top: 22%;
+            width: 50px;
+            display: table; 
+            p {
+                display: table-cell; 
+                vertical-align: middle; 
+                text-align: center; 
+                color: $almostBlack;
+                font-size: 20px;
+    
+                &:hover {
+                    color: $almostBlack;
+                    text-decoration: none !important;
+                }
+              }
+          }
+
+        &:hover {
+            p {
+                color: $almostBlack;
+                text-decoration: none !important;
+            }
         }
     }
 }
+
 
 .adminButton {
     background: $yellow;
@@ -60,4 +90,24 @@
 
 #shoeCreateForm {
     border: 1px solid $lightGray;
+}
+
+#adminTable {
+    color: $almostBlack;
+    th {
+        a {
+            color: $almostBlack;
+        }
+    }
+    td {
+        a {
+            .glyphicon {
+                color: $almostBlack;
+
+                &:hover {
+                    color: $yellow;
+                }
+            }
+        }
+    }
 }

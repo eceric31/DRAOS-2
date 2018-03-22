@@ -31,10 +31,12 @@
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                         data-description=""
+                        data-email="<%= current_user.email %>"
                         data-amount= "<%= ((current_order.subtotal + current_order.shipping) * 100) %>"
                         data-locale="auto"
                         data-label="PAY <%= (current_order.subtotal + current_order.shipping) %>KM"
-                        data-currency="BAM"></script>
+                        data-currency="BAM"
+                        data-allow-remember-me="false"></script>
                 <% end %>
                 <%= link_to "Back", '/cart/addresses', {id: "cart-button-continue1", class:" cart-button btn cart-button-cancel"} %>
             </div>

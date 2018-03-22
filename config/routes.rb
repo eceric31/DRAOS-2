@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :confirm_email
+      get :upgrade
     end
   end
+  get '/admin/users/upgrade' => 'users#upgrade'
 
   resources :admin, :only => [:index, :shoes, :users, :shoeCreate]
   get '/admin/users' => 'admin#users'
